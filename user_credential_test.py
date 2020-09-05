@@ -39,6 +39,7 @@ class TestCredentials(unittest.TestCase):
         Function to create credentials before each test
         '''
         self.new_credential = Credential("Test","Twitter","testuser2020@yahoo.com","Pass@2020")
+    
     def test__init(self):
         '''
         test to check if initialization is properly done
@@ -48,13 +49,19 @@ class TestCredentials(unittest.TestCase):
         self.assertEqual(self.new_credential.email,'testuser2020@yahoo.com')
         self.assertEqual(self.new_credential.acc_password,'Pass@2020')
 
-    def test_save_credentials(self):
+    def test_save_credential(self):
+        '''
+        test case to test if the object is saved into the contact list
+        '''
+        self.new_credential.save_credential()
+        self.assertEqual(len(Credential.credentials_list),1)
+    def test_save_multiple_credential(self):
         '''
         Test to check if the new credential info is saved into the credential list
         '''
-        self.new_credential.save_credentials()
+        self.new_credential.save_credential()
         facebook = Credential("Jane","Facebook","janejane@yahoo.com","Password@2019")
-        facebook.save_credentials()
+        facebook.save_credential()
         self.assertEqual(len(Credential.credentials_list),2)
     
 if __name__ == '__main__':

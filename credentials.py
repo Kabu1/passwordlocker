@@ -17,7 +17,7 @@ class Credential:
         self.email = email
         self.acc_password = acc_password
 
-    def save_credentials(self):
+    def save_credential(self):
         '''
         Function to save a newly created user instance
         '''

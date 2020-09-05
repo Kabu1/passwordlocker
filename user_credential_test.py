@@ -1,6 +1,7 @@
 import unittest #importing unittest module
 from user import User #importing the user class
 from credentials import Credential
+import pyperclip
 
 
 class TestUser(unittest.TestCase):
@@ -111,21 +112,11 @@ class TestCredentials(unittest.TestCase):
         find_credential = None
         for credential in Credential.credentials_list:
             find_credential = Credential.find_by_acc_name(credential.acc_name)
+            return pyperclip.copy(find_credential.acc_password)
+        Credential.copy_credential(self.new_credential.acc_name)
+        self.assertEqual("Pass2019",pyperclip.paste())
+        print(pyperclip.paste())
         
 
-    def test_copy_credential(self):
-        '''
-		Test to check if the copy a credential method copies the correct credential
-		'''
-		self.new_credential.save_credentials()
-		twitter = Credential('Jane','Twitter','Janejane@yahoo.com','Pass2019')
-		twitter.save_credentials()
-		find_credential = None
-		for credential in Credential.user_credentials_list:
-				find_credential =Credential.find_by_site_name(credential.site_name)
-				return pyperclip.copy(find_credential.password)
-		Credential.copy_credential(self.new_credential.site_name)
-		self.assertEqual('pswd100',pyperclip.paste())
-		print(pyperclip.paste())
 if __name__ == '__main__':
     unittest.main()

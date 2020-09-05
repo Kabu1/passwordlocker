@@ -12,4 +12,13 @@ class Credential:
         '''
         defining the properties of object credential
         '''
-    
+        self.user_name = user_name
+        self.acc_name = acc_name
+        self.email = email
+        self.acc_password = acc_password
+
+    def save_credentials(self):
+        '''
+        Function to save a newly created user instance
+        '''
+        Credential.credentials_list.append(self)

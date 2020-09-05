@@ -28,5 +28,34 @@ class TestUser(unittest.TestCase):
         '''
         self.new_user.save_user()#saving the new contact
         self.assertEqual(len(User.user_list),1)
+
+
+class TestCredentials(unittest.TestCase):
+    '''
+    Test class that defines test cases for the credentials class behaviors.
+    '''
+    def setUp(self):
+        '''
+        Function to create credentials before each test
+        '''
+        self.new_credential = Credential("Test","Twitter","testuser2020@yahoo.com","Pass@2020")
+    def test__init(self):
+        '''
+        test to check if initialization is properly done
+        '''
+        self.assertEqual(self.new_credential.user_name, 'Test')
+        self.assertEqual(self.new_credential.acc_name,'Twitter')
+        self.assertEqual(self.new_credential.email,'testuser2020@yahoo.com')
+        self.assertEqual(self.new_credential.acc_password,'Pass@2020')
+
+    def test_save_credentials(self):
+        '''
+        Test to check if the new credential info is saved into the credential list
+        '''
+        self.new_credential.save_credentials()
+        facebook = Credential("Jane","Facebook","janejane@yahoo.com","Password@2019")
+        facebook.save_credentials()
+        self.assertEqual(len(Credential.credentials_list),2)
+    
 if __name__ == '__main__':
     unittest.main()

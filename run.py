@@ -15,6 +15,12 @@ def save_user(user):
     Function to save a new user account
     '''
     user.save_user()
+def verify_user(first_name,password):
+	'''
+	Function that verifies the existance of the user before creating credentials
+	'''
+	checking_user = Credential.check_user(first_name,password)
+	return checking_user
 def generate_password():
     '''
     Function to generate a password automatically
@@ -70,5 +76,32 @@ def main():
         elif short_code == 'cc':
             print("To create a new account")
             print("-"*10)
-            print ("First name ....")
+            print("First name ....")
             first_name = input()
+
+            print("Last name ....")
+            last_name = input ()
+
+            print("password ....")
+            password = input()
+
+            save_user(create_user(first_name, last_name, password))
+            print(f'Congratulations 🎉, New Account has been created for: {first_name} {last_name} using password: {password}')
+
+        elif short_code == 'li':
+            print("-"*10)
+            print('To login, enter you account details:')
+            print("First name ....")
+            first_name = input()
+            print("Password ....")
+            password = input()
+            user_exists = verify_user(first_name, password)
+            if user_exists == first_name:
+                print(f'Welcome back 😍 {first_name}. please choose an option to continue')
+
+                while True:
+                    print('Use these codes to navigate: nc -create a credential, dc-dipslay credentials, cp-copy credential, ex-exit')
+                    short_code == input('Enter your choice: ').lower()
+
+if __name__ == '__main__':
+	main()

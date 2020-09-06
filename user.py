@@ -16,3 +16,14 @@ class User:
 
         '''
         User.user_list.append(self)
+    @classmethod
+    def check_user(cls,first_name, password):
+        '''
+        Method that check if users name and password matches
+        '''
+        current_user = ''
+        for user in User.user_list:
+            if (user.first_name  == first_name and user.password == password):
+                current_user == user.first_name
+        return current_user
+  

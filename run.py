@@ -83,13 +83,23 @@ def main():
             print("password ....")
             password = input()
 
-            save_user(create_user(first_name, last_name, password))
-            print(f'Congratulations 🎉, New Account has been created for: {first_name} {last_name} using password: {password}')
-            print("proceed to login")
-            print("first_name")
-            entered_first_name = input()
-            print("your password")
-            entered_password = input()
+            print("Confirm password ....")
+            confirm_password = input()
+
+            while confirm_password != password:
+                print("Password did not match")
+                print("password ....")
+                password = input()
+                print("Confirm password ....")
+                confirm_password = input()
+            else:
+                save_user(create_user(first_name, last_name, password))
+                print(f'Congratulations 🎉, New Account has been created for: {first_name} {last_name} using password: {password}')
+                print("proceed to login")
+                print("first_name")
+                entered_first_name = input()
+                print("your password")
+                entered_password = input()
 
             while entered_first_name != first_name or entered_password != password:
                 print("Invalid username or password")
@@ -97,21 +107,14 @@ def main():
                 entered_first_name = input()
                 print("Your password")
                 entered_password = input()
-            else:
-                print(f"welcome: {entered_first_name} to your account")
-        elif short_code == 'li':
-            print('To login, enter you account details:')
-            print("First name ....")
-            first_name = input()
-            print("Password ....")
-            password = input()
-            user_exists = verify_user(first_name, password)
-            if user_exists == first_name:
-                print(f'Welcome back 😍 {first_name}. please choose an option to continue')
+            else:                
+        
+                print(f'Welcome back 😍 {entered_first_name}. please choose an option to continue')
 
                 while True:
                     print('Use these codes to navigate: nc -create a credential, dc-dipslay credentials, cp-copy credential, ex-exit')
-                    short_code == input('Enter your choice: ').lower()
+                    short_code = input('Enter your choice: ').lower()
+        
 
                     if short_code == 'ex':
                         print(f'Goobye 😢 {first_name}')
@@ -133,14 +136,14 @@ def main():
                                 break
                             else:
                                 print('Oop!🥵 wrong option entered. Try again.')
-                        save_credential(create_credential(user_name, acc_name, email, acc_password))
+                        save_credential(create_credential(first_name, acc_name, email, acc_password))
                         print(f'Your credential has been created: Site name: {acc_name} - Email: {email} -Password: {acc_password}')
 
                     elif short_code == 'dc':
-                        if display_all_credentials(user_name):
+                        if display_all_credentials(first_name):
                             print("Here is a list of all your credentials")
                             print(' ')
-                            for credential in display_all_credentials(user_name):
+                            for credential in display_all_credentials(first_name):
                                 print(f'Site name: {credential.acc_name} - Email: {credential.email} - Password: {credential.acc_password}')
                             print(' ')
                         else:
@@ -153,7 +156,5 @@ def main():
                         print("oops 🥵! Wrong option entered. Try again.")
                 else: 
                     print('Oops! 🥵 Wrong option entered. Try again.')
-            else:
-                print('Oops! 🥵 Wrong option entered. Try again.')
 if __name__ == '__main__':
-	main()
+    main()

@@ -8,11 +8,11 @@ class Credential:
     '''
     credentials_list = []
 
-    def __init__(self, user_name, acc_name, email, acc_password):
+    def __init__(self, first_name, acc_name, email, acc_password):
         '''
         defining the properties of object credential
         '''
-        self.user_name = user_name
+        self.first_name = first_name
         self.acc_name = acc_name
         self.email = email
         self.acc_password = acc_password
@@ -27,20 +27,20 @@ class Credential:
         Function to delete a saved credential from the credential_list
         '''
         Credential.credentials_list.remove(self)
-    def generate_password(self, size=8, char=string.ascii_uppercase+string.ascii_lowercase+string.digits):
+    def generate_password(size=8, char=string.ascii_uppercase+string.ascii_lowercase+string.digits):
         '''
 		Function to generate an 8 character password for a credential
 		'''
         gen_pass=" ".join(random.choice(char)for i in range(size))
         return gen_pass
     @classmethod
-    def display_all_credentials(cls,user_name):
+    def display_all_credentials(cls,first_name):
         '''
         class method to display the lists of credentials saved 
         '''
         credentials_list = []
         for credential in cls.credentials_list:
-            if credential.user_name == user_name:
+            if credential.first_name == first_name:
                 credentials_list.append(credential)
         return credentials_list
     @classmethod

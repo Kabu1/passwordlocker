@@ -27,11 +27,11 @@ class Credential:
         Function to delete a saved credential from the credential_list
         '''
         Credential.credentials_list.remove(self)
-    def generate_password(size=8, char=string.ascii_uppercase+string.ascii_lowercase+string.digits):
+    def generate_password(self, size=8, char=string.ascii_uppercase+string.ascii_lowercase+string.digits):
         '''
 		Function to generate an 8 character password for a credential
 		'''
-        gen_pass=" ".join(random.choise(char)for i in range(size))
+        gen_pass=" ".join(random.choice(char)for i in range(size))
         return gen_pass
     @classmethod
     def display_all_credentials(cls,user_name):

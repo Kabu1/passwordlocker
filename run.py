@@ -14,7 +14,7 @@ def save_user(user):
     '''
     Function to save a new user account
     '''
-    user.save_user(user)
+    user.save_user()
 def generate_password():
     '''
     Function to generate a password automatically
@@ -31,4 +31,27 @@ def save_credential(credential):
     '''
     function to save a newly created credential
     '''
-    Credential.save_credential(credential)
+    credential.save_credential()
+def delete_credential(credential):
+    '''
+    function to delete a credential
+    '''
+    credential.delete_credential()
+def find_by_acc_name(acc_name):
+    '''
+    Function to check if a credential exists
+    '''
+    return Credential.find_by_acc_name(acc_name)
+
+
+def display_all_credentials(user_name):
+    '''
+    function to display credentials saved by a user
+    '''
+    return Credential.display_all_credentials(user_name)
+
+def copy_credential(acc_name):
+    '''
+    function to copy a credential details to the clipboard
+    '''
+    return Credential.copy_credential(acc_name)

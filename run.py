@@ -55,3 +55,20 @@ def copy_credential(acc_name):
     function to copy a credential details to the clipboard
     '''
     return Credential.copy_credential(acc_name)
+def main():
+    print("Hello there, welcome to your Password Locker 😜")
+    user_name = input()
+    print(f"Hello {user_name}. what would you like to do?")
+    print('\n')
+
+    while True:
+        print("Use these short codes to navigate : cc -create a new account, li-Log In, ex-Exit")
+        short_code = input('Enter a choice: ').lower()
+
+        if short_code == 'ex':
+            break
+        elif short_code == 'cc':
+            print("To create a new account")
+            print("-"*10)
+            print ("First name ....")
+            first_name = input()
